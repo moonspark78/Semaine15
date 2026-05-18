@@ -152,3 +152,20 @@ SELECT prenom FROM employes WHERE prenom LIKE "%ie";
 | Stephanie |
 +-----------+
 
+-- Affichage des prénoms contenant "ie"
+SELECT prenom FROM employes WHERE prenom LIKE "%ie%";
++-------------+
+| prenom      |
++-------------+
+| Jean-pierre |
+| Elodie      |
+| Melanie     |
+| Julien      |
+| Mathieu     |
+| Thierry     |
+| Damien      |
+| Daniel      |
+| Nathalie    |
+| Emilie      |
+| Stephanie   |
++-------------+
