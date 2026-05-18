@@ -201,3 +201,51 @@ SELECT * FROM employes WHERE service != "commercial"; -- différent de commercia
 -- >   supérieur
 -- >=  supérieur ou égal 
 
+-- Les employés ayant un salaire supérieur à 3000
+SELECT nom, prenom, service, salaire FROM employes WHERE salaire > 3000;
++----------+-------------+--------------+---------+
+| nom      | prenom      | service      | salaire |
++----------+-------------+--------------+---------+
+| Laborde  | Jean-pierre | direction    |    5000 |
+| Winter   | Thomas      | commercial   |    3550 |
+| Collier  | Melanie     | commercial   |    3100 |
+| Blanchet | Laura       | direction    |    4500 |
+| Chevel   | Daniel      | informatique |    3100 |
+| Martin   | Nathalie    | juridique    |    3550 |
++----------+-------------+--------------+---------+
+
+-- ORDER BY pour ordonner les résultats 
+-- Affichage des employes dans l'ordre alphabétique 
+SELECT * FROM employes ORDER BY nom;
+SELECT * FROM employes ORDER BY nom ASC; -- ASC pour ascendant (cas par défaut)
+SELECT * FROM employes ORDER BY nom DESC; -- DESC pour descendant (alphabétique inversé)
+
+-- Il est possible d'ordonner par plusieurs champs. Si le premier forme "un bloc" / a des valeurs similaires, on peut classer par un autre champ ensuite
+-- Classer par service puis par nom 
+SELECT service, nom, prenom FROM employes ORDER BY service, nom;
++---------------+----------+-------------+
+| service       | nom      | prenom      |
++---------------+----------+-------------+
+| assistant     | Lafaye   | Stephanie   |
+| commercial    | Collier  | Melanie     |
+| commercial    | Gallet   | Clement     |
+| commercial    | Miller   | Guillaume   |
+| commercial    | Perrin   | Celine      |
+| commercial    | Sennard  | Emilie      |
+| commercial    | Winter   | Thomas      |
+| communication | Thoyer   | Amandine    |
+| comptabilite  | Grand    | Fabrice     |
+| direction     | Blanchet | Laura       |
+| direction     | Laborde  | Jean-pierre |
+| informatique  | Chevel   | Daniel      |
+| informatique  | Durand   | Damien      |
+| informatique  | Vignal   | Mathieu     |
+| juridique     | Martin   | Nathalie    |
+| production    | Dubar    | Chloe       |
+| production    | Lagarde  | Benoit      |
+| secretariat   | Cottet   | Julien      |
+| secretariat   | Desprez  | Thierry     |
+| secretariat   | Fellier  | Elodie      |
++---------------+----------+-------------+
+
+
