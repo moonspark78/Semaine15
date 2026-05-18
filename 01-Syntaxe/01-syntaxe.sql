@@ -100,3 +100,14 @@ SELECT DISTINCT service FROM employes;
 | juridique     |
 | assistant     |
 +---------------+
+
+-- CONDITION WHERE
+-- Affichage des employes du service informatique 
+SELECT * FROM employes WHERE service = "informatique";
++-------------+---------+--------+------+--------------+---------------+---------+
+| id_employes | prenom  | nom    | sexe | service      | date_embauche | salaire |
++-------------+---------+--------+------+--------------+---------------+---------+
+|         701 | Mathieu | Vignal | m    | informatique | 2013-04-03    |    2500 |
+|         802 | Damien  | Durand | m    | informatique | 2014-07-05    |    2250 |
+|         854 | Daniel  | Chevel | m    | informatique | 2015-09-28    |    3100 |
++-------------+---------+--------+------+--------------+---------------+---------+
