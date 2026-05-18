@@ -117,3 +117,18 @@ SELECT * FROM employes WHERE service = "informatique";
 SELECT * FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND "2026-05-18";
 SELECT * FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND NOW(); -- Fonction NOW() retourne la date et l'heure de maintenant
 SELECT * FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND CURDATE(); -- CURDATE() retour la date d'aujourd'hui
+
++-------------+-----------+---------+------+--------------+---------------+---------+
+| id_employes | prenom    | nom     | sexe | service      | date_embauche | salaire |
++-------------+-----------+---------+------+--------------+---------------+---------+
+|         854 | Daniel    | Chevel  | m    | informatique | 2015-09-28    |    3100 |
+|         876 | Nathalie  | Martin  | f    | juridique    | 2016-01-12    |    3550 |
+|         900 | Benoit    | Lagarde | m    | production   | 2016-06-03    |    2550 |
+|         933 | Emilie    | Sennard | f    | commercial   | 2017-01-11    |    1800 |
+|         990 | Stephanie | Lafaye  | f    | assistant    | 2017-03-01    |    1775 |
++-------------+-----------+---------+------+--------------+---------------+---------+
+
+-- LIKE la valeur approchante 
+-- Like nous permet de lancer des recherches sur une information pas saisie complètement 
+-- Affichage des prénoms commençant par la lettre "s" 
+
