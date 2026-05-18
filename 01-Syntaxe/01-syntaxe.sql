@@ -70,3 +70,33 @@ INSERT INTO employes (id_employes, prenom, nom, sexe, service, date_embauche, sa
 (990, 'Stephanie', 'Lafaye', 'f', 'assistant', '2017-03-01', 1775);
 
 SELECT * FROM employes WHERE service = "informatique";
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+-------------- REQUETES DE SELECTION -----------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+-- Affichage complet des données d'une table 
+SELECT * FROM employes;
+
+-- Affichage d'uniquement certains champs 
+SELECT nom, prenom, service FROM employes;
+
+-- Exercice : Affichez la liste des différents services de la table employes 
+SELECT service FROM employes;
+-- Pour éviter les doublons et avoir une liste des différents services je rajoute DISTINCT
+SELECT DISTINCT service FROM employes;
++---------------+
+| service       |
++---------------+
+| direction     |
+| commercial    |
+| production    |
+| secretariat   |
+| comptabilite  |
+| informatique  |
+| communication |
+| juridique     |
+| assistant     |
++---------------+
