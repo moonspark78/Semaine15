@@ -132,3 +132,11 @@ SELECT * FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND CURDATE(); -
 -- Like nous permet de lancer des recherches sur une information pas saisie complètement 
 -- Affichage des prénoms commençant par la lettre "s" 
 
+-- % signifiant peu importe ce qui est ici
+SELECT prenom FROM employes WHERE prenom LIKE "s%";
++-----------+
+| prenom    |
++-----------+
+| Stephanie |
++-----------+
+
