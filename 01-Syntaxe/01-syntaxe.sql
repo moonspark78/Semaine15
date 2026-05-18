@@ -140,3 +140,15 @@ SELECT prenom FROM employes WHERE prenom LIKE "s%";
 | Stephanie |
 +-----------+
 
+-- Affichage des prénoms finissant par "ie"
+SELECT prenom FROM employes WHERE prenom LIKE "%ie";
++-----------+
+| prenom    |
++-----------+
+| Elodie    |
+| Melanie   |
+| Nathalie  |
+| Emilie    |
+| Stephanie |
++-----------+
+
