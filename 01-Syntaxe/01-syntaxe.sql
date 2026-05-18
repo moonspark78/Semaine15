@@ -248,4 +248,125 @@ SELECT service, nom, prenom FROM employes ORDER BY service, nom;
 | secretariat   | Fellier  | Elodie      |
 +---------------+----------+-------------+
 
+-- LIMIT pour limiter le nombre de résultat 
+-- Affichage des employés 3 par 3  
+SELECT * FROM employes LIMIT 0, 3; -- LIMIT position_de_depart, nb_de_ligne
++-------------+-------------+---------+------+------------+---------------+---------+
+| id_employes | prenom      | nom     | sexe | service    | date_embauche | salaire |
++-------------+-------------+---------+------+------------+---------------+---------+
+|         350 | Jean-pierre | Laborde | m    | direction  | 2010-12-09    |    5000 |
+|         388 | Clement     | Gallet  | m    | commercial | 2010-12-15    |    2300 |
+|         415 | Thomas      | Winter  | m    | commercial | 2011-05-03    |    3550 |
++-------------+-------------+---------+------+------------+---------------+---------+
+SELECT * FROM employes LIMIT 3, 3;
++-------------+---------+---------+------+--------------+---------------+---------+
+| id_employes | prenom  | nom     | sexe | service      | date_embauche | salaire |
++-------------+---------+---------+------+--------------+---------------+---------+
+|         417 | Chloe   | Dubar   | f    | production   | 2011-09-05    |    1900 |
+|         491 | Elodie  | Fellier | f    | secretariat  | 2011-11-22    |    1600 |
+|         509 | Fabrice | Grand   | m    | comptabilite | 2011-12-30    |    2900 |
++-------------+---------+---------+------+--------------+---------------+---------+
+SELECT * FROM employes LIMIT 6, 3;
++-------------+-----------+----------+------+------------+---------------+---------+
+| id_employes | prenom    | nom      | sexe | service    | date_embauche | salaire |
++-------------+-----------+----------+------+------------+---------------+---------+
+|         547 | Melanie   | Collier  | f    | commercial | 2012-01-08    |    3100 |
+|         592 | Laura     | Blanchet | f    | direction  | 2012-05-09    |    4500 |
+|         627 | Guillaume | Miller   | m    | commercial | 2012-07-02    |    1900 |
++-------------+-----------+----------+------+------------+---------------+---------+
+
+-- On peut utiliser un seul param à LIMIT, ce sera le nombre de lignes sorties 
+-- Par exemple les 10 premieres lignes d'une requête 
+SELECT * FROM employes LIMIT 10;
+
+-- La syntaxe ci dessous est celle de PostgreSQL, mais elle fonctionne aussi en MySQL ! 
+SELECT * FROM employes LIMIT 10 OFFSET 0;
+
+
+-- On peut faire des opérations dans les champs que l'on souhaite sélectionner
+-- Par exemple : 
+-- Affichage des employes avec leur salaire annuel
+SELECT nom, prenom, service, salaire * 12 FROM employes;
+SELECT nom, prenom, service, salaire * 12 AS "salaire_annuel" FROM employes;
++----------+-------------+---------------+--------------+
+| nom      | prenom      | service       | salaire * 12 |
++----------+-------------+---------------+--------------+
+| Laborde  | Jean-pierre | direction     |        60000 |
+| Gallet   | Clement     | commercial    |        27600 |
+| Winter   | Thomas      | commercial    |        42600 |
+| Dubar    | Chloe       | production    |        22800 |
+| Fellier  | Elodie      | secretariat   |        19200 |
+| Grand    | Fabrice     | comptabilite  |        34800 |
+| Collier  | Melanie     | commercial    |        37200 |
+| Blanchet | Laura       | direction     |        54000 |
+| Miller   | Guillaume   | commercial    |        22800 |
+| Perrin   | Celine      | commercial    |        32400 |
+| Cottet   | Julien      | secretariat   |        16680 |
+| Vignal   | Mathieu     | informatique  |        30000 |
+| Desprez  | Thierry     | secretariat   |        18000 |
+| Thoyer   | Amandine    | communication |        25200 |
+| Durand   | Damien      | informatique  |        27000 |
+| Chevel   | Daniel      | informatique  |        37200 |
+| Martin   | Nathalie    | juridique     |        42600 |
+| Lagarde  | Benoit      | production    |        30600 |
+| Sennard  | Emilie      | commercial    |        21600 |
+| Lafaye   | Stephanie   | assistant     |        21300 |
++----------+-------------+---------------+--------------+
+
+-- AS nous permet de donner un surnom à la colonne lors de la récupération. Il faut déjà penser à la récupération des informations avec notre langage back, un indice "salaire * 12" serait problématique, on renomme donc en snake case, c'est la convention d'écriture des noms de champs en mysql 
+
+
+----------- Fonctions d'agrégation --------------------------------------
+
+-- SUM() pour avoir la somme 
+-- La masse salariale annuelle de l'entreprise
+SELECT SUM(salaire * 12) AS "masse_salariale" FROM employes;
++-----------------+
+| masse_salariale |
++-----------------+
+|          623580 |
++-----------------+
+
+-- AVG() la moyenne 
+-- Affichage du salaire moyen de l'entreprise
+SELECT AVG(salaire) AS "salaire_moyen" FROM employes;
++---------------+
+| salaire_moyen |
++---------------+
+|       2598.25 |
++---------------+
+
+-- ROUND() pour arrondir 
+-- ROUND(valeur) => à l'entier
+-- ROUND(valeur, 1) => à une décimale
+SELECT ROUND(AVG(salaire)) AS "salaire_moyen" FROM employes;
+
+-- COUNT() permet de compter le nombre de lignes d'une requête
+-- Le nombre d'employés dans l'entreprise : 
+-- On mettra toujours * dans les parenthèses de COUNT(), pourquoi ? Parceque comme ça on est sûr de compter l'intégralité des lignes d'une requête
+-- Si on met plutôt le nom d'un champ entre ses parenthèses et que le champ a pour valeur "NULL" sur certains enregistrements, ils ne seront pas comptés ! 
+-- Si on veut faire ça, c'est une meilleure pratique de mettre une condition WHERE le champ en question IS NOT NULL plutôt que de s'attendre à ce que le COUNT() le gère seul 
+SELECT COUNT(*) AS nombre_employes FROM employes;
++-----------------+
+| nombre_employes |
++-----------------+
+|              20 |
++-----------------+
+
+-- MIN() & MAX() 
+-- Salaire minimum 
+SELECT MIN(salaire) FROM employes;
++--------------+
+| MIN(salaire) |
++--------------+
+|         1390 |
++--------------+
+-- Salaire maximum
+SELECT MAX(salaire) FROM employes;
++--------------+
+| MAX(salaire) |
++--------------+
+|         5000 |
++--------------+
+
 
