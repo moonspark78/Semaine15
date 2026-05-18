@@ -15,3 +15,9 @@ DROP TABLE -- Supprime une table
 CREATE TABLE -- Crée une table
 ALTER TABLE -- Modifie la structure d'une table
 INSERT INTO -- Insère des données dans une table
+
+DROP TABLE IF EXISTS nom_de_la_table; -- Supprime la table si elle existe
+TROUNCATE TABLE nom_de_la_table; -- Supprime toutes les données d'une table sans supprimer la structure
+
+DESC nom_de_la_table; -- Affiche la structure d'une table
+DESCRIBE nom_de_la_table; -- Affiche la structure d'une table (synonyme
