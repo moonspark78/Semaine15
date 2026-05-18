@@ -111,3 +111,9 @@ SELECT * FROM employes WHERE service = "informatique";
 |         802 | Damien  | Durand | m    | informatique | 2014-07-05    |    2250 |
 |         854 | Daniel  | Chevel | m    | informatique | 2015-09-28    |    3100 |
 +-------------+---------+--------+------+--------------+---------------+---------+
+
+-- BETWEEN
+-- Affichage des employés ayant été embauché entre 2015 et aujourd'hui
+SELECT * FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND "2026-05-18";
+SELECT * FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND NOW(); -- Fonction NOW() retourne la date et l'heure de maintenant
+SELECT * FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND CURDATE(); -- CURDATE() retour la date d'aujourd'hui
