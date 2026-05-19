@@ -135,6 +135,46 @@ WHERE id_abonne IN (
   )
 );
 -- EXERCICE 6: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque.
+SELECT titre
+FROM livre
+WHERE id_livre IN (
+  SELECT id_livre
+  FROM emprunt
+  WHERE id_abonne = (
+    SELECT id_abonne
+    FROM abonne
+    WHERE prenom = 'Chloe'
+  )
+);
 -- EXERCICE 7: Nous aimerions connaitre les titres des livres que Chloe n'a pas emprunté à la bibliotheque.
+SELECT titre
+FROM livre
+WHERE id_livre NOT IN (
+  SELECT id_livre
+  FROM emprunt
+  WHERE id_abonne = (
+    SELECT id_abonne
+    FROM abonne
+    WHERE prenom = 'Chloe'
+  )
+);
 -- EXERCICE 8: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque ET qui n'ont pas été rendu.
+SELECT titre
+FROM livre
+WHERE id_livre IN (
+  SELECT id_livre
+  FROM emprunt
+  WHERE id_abonne = (
+    SELECT id_abonne
+    FROM abonne
+    WHERE prenom = 'Chloe'
+  )
+  AND date_rendu IS NULL
+);
 -- EXERCICE 9 :  Qui a emprunté le plus de livre à la bibliotheque ?
+SELECT a.prenom, COUNT(e.id_emprunt) AS total
+FROM abonne a
+JOIN emprunt e ON a.id_abonne = e.id_abonne
+GROUP BY a.id_abonne
+ORDER BY total DESC
+LIMIT 1;
