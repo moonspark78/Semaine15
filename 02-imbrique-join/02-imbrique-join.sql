@@ -178,3 +178,63 @@ JOIN emprunt e ON a.id_abonne = e.id_abonne
 GROUP BY a.id_abonne
 ORDER BY total DESC
 LIMIT 1;
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+---------- REQUETES EN JOINTURE ------------------------------------------
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+-- Une jointure est toujours possible, même lorsqu'on souhaite afficher des champs de plusieurs tables différentes
+-- Une imbriquée ne peut afficher que des informations d'une seule table 
+
+-- Avec une imbriquée on parcourt les tables les unes après les autres en passant par le champ commun PK/FK, mais réellement on utilise rarement les imbriquées dans ces situations
+-- On préfèrera les jointures car on peut mélanger les champs de sorties, les appels de tables, les conditions sans que cela pose problème 
+
+-- Nous aimerions connaître les dates de sortie et les dates de rendu pour l'abonné Guillaume 
+    -- En imbriquée pas possible ! Les infos des dates de rendu sont sur la table emprunt et l'info "Guillaume" vient de la table abonne 
+
+-- En jointure c'est ok ! 
+
+-- Première syntaxe, pas très conventionnelle mais pratique ! 
+SELECT prenom, date_sortie, date_rendu          -- Ce que je veux afficher, de plusieurs tables différentes pas de soucis
+FROM emprunt, abonne                            -- Toutes les tables dont j'ai besoin pour cette requête 
+WHERE prenom = "Guillaume"                      -- Mes conditions (ici une seule)
+AND abonne.id_abonne = emprunt.id_abonne;       -- La jointure ! C'est une condition qui indique quel champ correspond à quel autre sur l'autre table 
+
+-- Lors d'une jointure il est toujours de spécifier les préfixes de tables pour tous les champs appelés
+SELECT abonne.prenom, emprunt.date_sortie, emprunt.date_rendu          
+FROM emprunt, abonne                            
+WHERE abonne.prenom = "Guillaume"                     
+AND abonne.id_abonne = emprunt.id_abonne;       
+
+-- Les prefixes pouvant parfois alourdir nos requêtes, on peut donner des alias à nos tables 
+SELECT a.prenom, e.date_sortie, e.date_rendu          
+FROM emprunt e, abonne a                          -- Ici ma table emprunt s'appelle maintenant e et abonne a 
+WHERE a.prenom = "Guillaume"                     
+AND a.id_abonne = e.id_abonne;   
+
+-- Autre syntaxe, plus conventionnelle 
+-- En utilisant INNER JOIN ou simplement JOIN 
+-- Avec cette méthode on joint les tables une par une 
+SELECT a.prenom, e.date_sortie, e.date_rendu 
+FROM emprunt e 
+INNER JOIN abonne a ON e.id_abonne = a.id_abonne 
+WHERE a.prenom = "Guillaume";
+
+SELECT a.prenom, e.date_sortie, e.date_rendu 
+FROM emprunt e 
+INNER JOIN abonne a USING (id_abonne) -- On peut utiliser USING si par chance notre PK a exactement le meme nom que la FK (c'est assez rare en général)
+WHERE a.prenom = "Guillaume";
+
+-- S'il fallait utiliser une seule syntaxe, on préférera celle ci-dessous, avec JOIN tout court et le ON pour faire la jointure
+SELECT a.prenom, e.date_sortie, e.date_rendu 
+FROM emprunt e 
+JOIN abonne a ON e.id_abonne = a.id_abonne 
+WHERE a.prenom = "Guillaume";
+
+-- EXERCICE 1 : Nous aimerions connaitre les dates de sortie et les dates de rendu pour les livres écrit par Alphonse Daudet 
+-- EXERCICE 2 : Qui a emprunté le livre "une vie" sur l'année 2016 
+-- EXERCICE 3 : Nous aimerions connaitre le nombre de livre emprunté par chaque abonné 
+-- EXERCICE 4 : Nous aimerions connaitre le nombre de livre emprunté à rendre par chaque abonné 
+-- EXERCICE 5 : Qui (prenom) a emprunté Quoi (titre) et Quand (date_sortie) ?
