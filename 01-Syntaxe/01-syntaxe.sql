@@ -432,7 +432,7 @@ FROM employes
 GROUP BY service;
 
 -- 10 -- Afficher le nombre de recrutement sur l'année 2010
-SELECT COUNT(*)
+SELECT COUNT(*) AS nombre_recrutements_2010
 FROM employes
 WHERE YEAR(date_embauche) = 2010;
 
