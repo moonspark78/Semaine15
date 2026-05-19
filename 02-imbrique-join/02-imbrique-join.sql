@@ -123,6 +123,17 @@ WHERE id_abonne = (
   WHERE prenom = 'Guillaume'
 );
 -- EXERCICE 5: Affichez la liste des abonnés ayant déjà emprunté un livre d'Alphonse Daudet
+SELECT prenom
+FROM abonne
+WHERE id_abonne IN (
+  SELECT id_abonne
+  FROM emprunt
+  WHERE id_livre IN (
+    SELECT id_livre
+    FROM livre
+    WHERE auteur = 'ALPHONSE DAUDET'
+  )
+);
 -- EXERCICE 6: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque.
 -- EXERCICE 7: Nous aimerions connaitre les titres des livres que Chloe n'a pas emprunté à la bibliotheque.
 -- EXERCICE 8: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque ET qui n'ont pas été rendu.
