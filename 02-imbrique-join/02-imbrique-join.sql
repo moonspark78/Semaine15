@@ -91,6 +91,13 @@ SELECT titre FROM livre WHERE id_livre IN (SELECT id_livre FROM emprunt WHERE da
 -- Une requête imbriquée m'enverra très régulièrement plusieurs résultats on utilisera toujours IN et non pas = 
 
 -- EXERCICE 1: Quels sont les prénoms des abonnés n'ayant pas rendu un livre à la bibliotheque.
+SELECT prenom
+FROM abonne
+WHERE id_abonne IN (
+  SELECT id_abonne
+  FROM emprunt
+  WHERE date_rendu IS NULL
+);
 -- EXERCICE 2 : Nous aimerions connaitre le(s) n° des livres empruntés par Chloé
 -- EXERCICE 3: Affichez les prénoms des abonnés ayant emprunté un livre le 07/12/2016.
 -- EXERCICE 4: combien de livre Guillaume a emprunté à la bibliotheque ?
