@@ -107,6 +107,13 @@ WHERE id_abonne = (
   WHERE prenom = 'Chloe'
 );
 -- EXERCICE 3: Affichez les prénoms des abonnés ayant emprunté un livre le 07/12/2016.
+SELECT prenom
+FROM abonne
+WHERE id_abonne IN (
+  SELECT id_abonne
+  FROM emprunt
+  WHERE date_sortie = '2016-12-07'
+);
 -- EXERCICE 4: combien de livre Guillaume a emprunté à la bibliotheque ?
 -- EXERCICE 5: Affichez la liste des abonnés ayant déjà emprunté un livre d'Alphonse Daudet
 -- EXERCICE 6: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque.
