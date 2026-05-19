@@ -115,6 +115,13 @@ WHERE id_abonne IN (
   WHERE date_sortie = '2016-12-07'
 );
 -- EXERCICE 4: combien de livre Guillaume a emprunté à la bibliotheque ?
+SELECT COUNT(*) AS total_emprunts
+FROM emprunt
+WHERE id_abonne = (
+  SELECT id_abonne
+  FROM abonne
+  WHERE prenom = 'Guillaume'
+);
 -- EXERCICE 5: Affichez la liste des abonnés ayant déjà emprunté un livre d'Alphonse Daudet
 -- EXERCICE 6: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque.
 -- EXERCICE 7: Nous aimerions connaitre les titres des livres que Chloe n'a pas emprunté à la bibliotheque.
