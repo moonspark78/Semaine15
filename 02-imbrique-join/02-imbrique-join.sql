@@ -87,3 +87,15 @@ SELECT titre FROM livre WHERE id_livre IN (SELECT id_livre FROM emprunt WHERE da
 | Une vie                 |
 | Les Trois Mousquetaires |
 +-------------------------+
+
+-- Une requête imbriquée m'enverra très régulièrement plusieurs résultats on utilisera toujours IN et non pas = 
+
+-- EXERCICE 1: Quels sont les prénoms des abonnés n'ayant pas rendu un livre à la bibliotheque.
+-- EXERCICE 2 : Nous aimerions connaitre le(s) n° des livres empruntés par Chloé
+-- EXERCICE 3: Affichez les prénoms des abonnés ayant emprunté un livre le 07/12/2016.
+-- EXERCICE 4: combien de livre Guillaume a emprunté à la bibliotheque ?
+-- EXERCICE 5: Affichez la liste des abonnés ayant déjà emprunté un livre d'Alphonse Daudet
+-- EXERCICE 6: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque.
+-- EXERCICE 7: Nous aimerions connaitre les titres des livres que Chloe n'a pas emprunté à la bibliotheque.
+-- EXERCICE 8: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque ET qui n'ont pas été rendu.
+-- EXERCICE 9 :  Qui a emprunté le plus de livre à la bibliotheque ?
