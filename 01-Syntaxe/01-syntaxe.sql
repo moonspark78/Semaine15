@@ -438,7 +438,7 @@ WHERE YEAR(date_embauche) = 2010;
 
 
 -- 11 -- Afficher le salaire moyen appliqué lors des recrutements sur la période allant de 2015 a 2017
-SELECT AVG(salaire) FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND "2017-12-31";
+SELECT AVG(salaire) AS salaire_moyen FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND "2017-12-31";
 
 
 -- 12 -- Afficher le nombre de service différent 
