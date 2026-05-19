@@ -442,7 +442,7 @@ SELECT AVG(salaire) FROM employes WHERE date_embauche BETWEEN "2015-01-01" AND "
 
 
 -- 12 -- Afficher le nombre de service différent 
-SELECT COUNT(DISTINCT service) FROM employes;
+SELECT COUNT(DISTINCT service) AS nombre_services FROM employes;
 
 
 -- 13 -- Afficher tous les employés sauf ceux du service production et secrétariat
