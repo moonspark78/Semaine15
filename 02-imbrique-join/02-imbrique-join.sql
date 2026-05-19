@@ -77,3 +77,13 @@ SELECT titre FROM livre WHERE id_livre IN (100, 105); -- Ici je mets en brut, le
 | Une vie                 |
 | Les Trois Mousquetaires |
 +-------------------------+
+
+-- En fait, une requête imbriquée c'est le fait de pouvoir mettre une requête à l'intérieur d'une autre !
+-- On a besoin du résultat de la "sous requete" pour mener à bien la première requête
+SELECT titre FROM livre WHERE id_livre IN (SELECT id_livre FROM emprunt WHERE date_rendu IS NULL); 
++-------------------------+
+| titre                   |
++-------------------------+
+| Une vie                 |
+| Les Trois Mousquetaires |
++-------------------------+
