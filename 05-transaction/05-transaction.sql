@@ -15,3 +15,11 @@
 -- On les utilise généralement au travers de notre langage back (via PDO en PHP) mais c'est un outil existant déjà dans MySQL que je peux manipuler avec ma console 
 
 USE entreprise;
+
+START TRANSACTION; -- Démarre une transaction
+
+SELECT * FROM employes; -- On vérifie nos données, tout est ok 
+
+UPDATE employes SET salaire = +100; -- Je me trompe dans ma requête... Je mets tout le monde à 100 en salaire... :( 
+
+SELECT * FROM employes; -- On vérifie nos données, tout est mauvais !
