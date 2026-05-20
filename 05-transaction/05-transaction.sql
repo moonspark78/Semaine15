@@ -46,3 +46,10 @@ try {
 
 -- TRANSACTION AVANCEE & SAVEPOINT 
 
+START TRANSACTION;
+
+SELECT * FROM employes; -- Nos données d'origine 
+
+SAVEPOINT point1; -- On crée un point de save nommé "point1"
+
+UPDATE employes SET salaire = 1000;
