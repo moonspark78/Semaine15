@@ -30,3 +30,19 @@ SELECT * FROM employes; -- On vérifie nos données, tout est mauvais !
 
 ROLLBACK; -- ROLLBACK me permet de tout annuler depuis le début de la transaction ATTENTION cela cloture la transaction en cours
 COMMIT; -- COMMIT me permet de tout valider depuis le début de la transaction ATTENTION cela cloture la transaction en cours 
+
+-- En langage back on utilisera les transactions avec des try/catch 
+try {
+    -- begin transaction
+    -- test de code
+    -- envoi de requete
+    -- si tout est ok je commit
+    -- commit : transaction réussie
+} catch() {
+    -- je tombe là s'il y a eu un probleme dans le try, donc un probleme avec mes requetes
+    -- dans ce cas, je rollback!
+    -- rollback : je préfère annuler car problème dans les requêtes de ma transaction
+}
+
+-- TRANSACTION AVANCEE & SAVEPOINT 
+
