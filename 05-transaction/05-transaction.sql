@@ -82,3 +82,10 @@ DELETE FROM employes; -- Je supprime tout le contenu de la table au travers d'un
 SELECT * FROM employes; -- La table est vide
 ROLLBACK; -- Je rollback
 
+SELECT * FROM employes; -- La suppression a été annulée, je récupère tous mes employes ! 
+
+START TRANSACTION; -- J'ouvre une transaction
+TRUNCATE employes; -- Je supprime tout le contenu de la table au travers de TRUNCATE, c'est une requête de structure
+SELECT * FROM employes; -- La table est vide
+ROLLBACK; -- Je rollback
+
