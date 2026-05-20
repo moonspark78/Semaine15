@@ -66,3 +66,11 @@ SAVEPOINT point3; -- On crée un point de save nommé "point3"
 
 ROLLBACK TO point2; -- Retour au point2
 SELECT * FROM employes; -- Tout le monde retour à 1000
+
+ROLLBACK TO point3; -- Pas possible, la creation du point3 a été ROLLBACK lorsque je suis revenu au point2
+
+-- Pour des ROLLBACK TO savepoint spécifique, je reste toujours dans la transaction, en attente d'un COMMIT ou ROLLBACK total 
+
+COMMIT; -- ferme la transaction
+ROLLBACK; -- ferme la transaction 
+
