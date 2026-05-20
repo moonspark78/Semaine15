@@ -89,3 +89,4 @@ TRUNCATE employes; -- Je supprime tout le contenu de la table au travers de TRUN
 SELECT * FROM employes; -- La table est vide
 ROLLBACK; -- Je rollback
 
+SELECT * FROM employes; -- Oups ! La table est toujours vide, et c'est définitif ! La transaction n'a pas été capable de rollback un TRUNCATE car c'est une requête structure
