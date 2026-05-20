@@ -23,3 +23,10 @@ SELECT * FROM employes; -- On vérifie nos données, tout est ok
 UPDATE employes SET salaire = +100; -- Je me trompe dans ma requête... Je mets tout le monde à 100 en salaire... :( 
 
 SELECT * FROM employes; -- On vérifie nos données, tout est mauvais !
+
+-- Heureusement je suis dans une transaction !!!
+-- A partir de là je peux soit COMMIT pour valider tout
+-- soit ROLLBACK pour annuler tout 
+
+ROLLBACK; -- ROLLBACK me permet de tout annuler depuis le début de la transaction ATTENTION cela cloture la transaction en cours
+COMMIT; -- COMMIT me permet de tout valider depuis le début de la transaction ATTENTION cela cloture la transaction en cours 
