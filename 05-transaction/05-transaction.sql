@@ -53,3 +53,9 @@ SELECT * FROM employes; -- Nos données d'origine
 SAVEPOINT point1; -- On crée un point de save nommé "point1"
 
 UPDATE employes SET salaire = 1000;
+
+SELECT * FROM employes; -- Tout le monde à 1000
+
+SAVEPOINT point2; -- On crée un point de save nommé "point2"
+
+UPDATE employes SET salaire = 2000;
