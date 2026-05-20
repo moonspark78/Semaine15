@@ -63,3 +63,6 @@ UPDATE employes SET salaire = 2000;
 SELECT * FROM employes; -- Tout le monde à 2000
 
 SAVEPOINT point3; -- On crée un point de save nommé "point3"
+
+ROLLBACK TO point2; -- Retour au point2
+SELECT * FROM employes; -- Tout le monde retour à 1000
