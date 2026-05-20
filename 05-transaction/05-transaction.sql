@@ -74,3 +74,11 @@ ROLLBACK TO point3; -- Pas possible, la creation du point3 a été ROLLBACK lors
 COMMIT; -- ferme la transaction
 ROLLBACK; -- ferme la transaction 
 
+
+-- ATTENTION, à l'intérieur d'une transaction, on peut tester uniquement des requêtes crud des 4 types (select, insert, update, delete) mais certaines autres instructions (les requêtes structure) passeront outre la transaction et seront bien appliquées (TRUNCATE, DROP ou autre)
+
+START TRANSACTION; -- J'ouvre une transaction
+DELETE FROM employes; -- Je supprime tout le contenu de la table au travers d'une requête action classique DELETE
+SELECT * FROM employes; -- La table est vide
+ROLLBACK; -- Je rollback
+
