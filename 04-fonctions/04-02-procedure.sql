@@ -17,3 +17,10 @@
 
 
 DELIMITER $  
+----------------------------------
+-- Création d'une procédure stockée qui affiche la date du jour en français 
+CREATE PROCEDURE date_du_jour()
+BEGIN 
+    SELECT DATE_FORMAT(CURDATE(), "%d/%m/%Y") AS "today";
+END $ 
+CALL date_du_jour() $
