@@ -38,8 +38,32 @@ CALL date_du_jour() $
 
     CALL addition(17,3) $
 
-    -- - Exercice 1/ Faire une procédure stockée qui affiche toutes les informations de tous les employes
+-- - Exercice 1/ Faire une procédure stockée qui affiche toutes les informations de tous les employes
+DELIMITER $
+
+CREATE PROCEDURE afficher_employes()
+BEGIN
+    SELECT * 
+    FROM employes;
+END $
+
+CALL afficher_employes() $
+
+
 -- - Exercice 2/ Faire une PROCEDURE qui prends en param le prenom d'un employe et qui affiche le service et le salaire de l'employé
+DELIMITER $
+
+CREATE PROCEDURE infos_employe(IN prenom_employe VARCHAR(50))
+BEGIN
+    SELECT service, salaire
+    FROM employes
+    WHERE prenom = prenom_employe;
+END $
+
+CALL infos_employe('Jean-pierre') $
+
+
+
 -- - Exercice 3/ Cette année, chaque salarié va toucher 10% de son salaire en plus et une prime de 700€. Faite une procédure permettant de calculer le nouveau salaire annuel de chaque salarié et de le modifier. Le but étant d'appeler la procédure pour un salarié à la fois
 DELIMITER $
 
