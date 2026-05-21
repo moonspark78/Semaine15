@@ -24,3 +24,16 @@ BEGIN
     SELECT DATE_FORMAT(CURDATE(), "%d/%m/%Y") AS "today";
 END $ 
 CALL date_du_jour() $
+
+
+-- On peut avoir des params entrant/sortant d'une procédure 
+    -- IN : entrant 
+    -- OUT : sortant 
+    -- INOUT : les deux 
+
+    CREATE PROCEDURE addition(IN valeur1 INT, IN valeur2 INT)
+    BEGIN 
+        SELECT valeur1+valeur2;
+    END$ 
+
+    CALL addition(17,3) $
