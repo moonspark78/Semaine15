@@ -37,3 +37,11 @@ CALL date_du_jour() $
     END$ 
 
     CALL addition(17,3) $
+
+    -- - Exercice 1/ Faire une procédure stockée qui affiche toutes les informations de tous les employes
+-- - Exercice 2/ Faire une PROCEDURE qui prends en param le prenom d'un employe et qui affiche le service et le salaire de l'employé
+-- - Exercice 3/ Cette année, chaque salarié va toucher 10% de son salaire en plus et une prime de 700€. Faite une procédure permettant de calculer le nouveau salaire annuel de chaque salarié et de le modifier. Le but étant d'appeler la procédure pour un salarié à la fois
+-- - Exercice 4/ Faire une procédure qui prends en param le prénom et indique de quel groupe il fait parti parmis les groupes suivant 
+                        -- Plus de 3000e = Groupe 1 
+                        -- Entre 2000 et 3000 = Groupe 2 
+                        -- Entre 0 et 2000 = Groupe 3 
