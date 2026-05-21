@@ -15,3 +15,7 @@ SELECT * FROM employes WHERE prenom = "Jean-Pierre";
 
 -- Là je défini une variable supposée reçu d'un form, d'une saisie utilisateur
 SET @prenom = "Jean-Pierre";
+
+
+-- Ici elle est exécutée directement 
+SELECT * FROM employes WHERE prenom = @prenom;
