@@ -41,6 +41,17 @@ CALL date_du_jour() $
     -- - Exercice 1/ Faire une procédure stockée qui affiche toutes les informations de tous les employes
 -- - Exercice 2/ Faire une PROCEDURE qui prends en param le prenom d'un employe et qui affiche le service et le salaire de l'employé
 -- - Exercice 3/ Cette année, chaque salarié va toucher 10% de son salaire en plus et une prime de 700€. Faite une procédure permettant de calculer le nouveau salaire annuel de chaque salarié et de le modifier. Le but étant d'appeler la procédure pour un salarié à la fois
+DELIMITER $
+
+CREATE PROCEDURE augmenter_salaire(IN prenom_employe VARCHAR(50))
+BEGIN
+    UPDATE employes
+    SET salaire = (salaire * 1.10) + 700
+    WHERE prenom = prenom_employe;
+END $
+
+CALL augmenter_salaire('Jean-pierre') $
+
 -- - Exercice 4/ Faire une procédure qui prends en param le prénom et indique de quel groupe il fait parti parmis les groupes suivant 
                         -- Plus de 3000e = Groupe 1 
                         -- Entre 2000 et 3000 = Groupe 2 
