@@ -19,3 +19,7 @@ SET @prenom = "Jean-Pierre";
 
 -- Ici elle est exécutée directement 
 SELECT * FROM employes WHERE prenom = @prenom;
+
+-- Pour éviter que l'utilisateur m'envoie une chaine de caractère malveillante, pour tenter par exemple une injection SQL, je préfère passer par une requête préparée
+PREPARE req1 FROM "SELECT * FROM employes WHERE prenom=?"; -- le ? ici est un trou ! une info manquante que je vais lui donner plus tard 
+EXECUTE req1 USING @prenom; -- Ici on execute la requête en transmettant le param manquant, des filtres s'appliquent par défaut, généralement gérés par le langage back (notre PHP)
