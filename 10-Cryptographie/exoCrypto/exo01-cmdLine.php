@@ -18,3 +18,9 @@ sudo apt install openssl
 // Documentation openssl : https://docs.openssl.org/master/
 
 // Documentation openssl pour l'outil de cryptage : https://docs.openssl.org/master/man1/openssl-enc/#synopsis
+
+// Vous allez peut être devoir définir une variable d'environnement système 
+// OPENSSL_CONF 
+    // chemin d'accès (pour moi)  : C:\wamp64\bin\apache\apache2.4.59\conf\openssl.cnf
+
+
