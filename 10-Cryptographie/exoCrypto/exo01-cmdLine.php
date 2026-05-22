@@ -14,3 +14,7 @@
 // Sur Linux, à la mano
 sudo apt update
 sudo apt install openssl
+
+// Documentation openssl : https://docs.openssl.org/master/
+
+// Documentation openssl pour l'outil de cryptage : https://docs.openssl.org/master/man1/openssl-enc/#synopsis
