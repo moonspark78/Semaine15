@@ -29,8 +29,28 @@ sudo apt install openssl
 
     Etapes : 
 
+   
+
         1 - Créez un fichier confidentiel.txt contenant un message.
         2 - Chiffrez avec la commande openssl enc -e   (plusieurs options sont à définir, à votre propre choix, un algorithme de cryptage, il faut aussi indiquer le fichier -in et le fichier -out)
         3 - Déchiffrer avec openssl enc -d 
 
 */
+    openssl version
+    touch confidentiel.txt
+    Chiffrer le fichier : openssl enc -aes-256-cbc -e -in confidentiel.txt -out secret.enc
+
+    enter AES-256-CBC encryption password:
+    Verifying - enter AES-256-CBC encryption password:
+    *** WARNING : deprecated key derivation used.
+    Using -iter or -pbkdf2 would be better.
+
+    cela a creer un fichier secret.enc
+    Desktop ➜ cat secret.enc
+    Salted__�?�����5&�R���,���}�
+
+
+    pour le dechiffrer : openssl enc -aes-256-cbc -d -in secret.enc -out dechiffre.txt
+
+    Lire le fichier déchiffré: cat dechiffre.txt
+?>
